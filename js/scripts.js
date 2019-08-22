@@ -2,37 +2,53 @@
 $(document).ready(function() {
   $('.converter').submit(function(event) {
     event.preventDefault();
-    number = $("input#numInput").val();
-    output = constructAdditively(number);
-    $("p#output").text("result =" + output);
+    var number = parseInt($("input#numInput").val());
+    var romanNumeralString = '';
+    var output = constructAdditively(number, romanNumeralString);
 
+    $("p#output").text("result =" + output);
   });
 });
 
 
 //backend
 
-var roman = ['I', 'V', 'X', 'L', 'C', 'D', 'M'];
-var romanValues = [1,5,10,50,100,500,1000];
-var romanNumeralString;
 
-function constructAdditively(num){
+
+function constructAdditively(number, romanNumeralString){
   console.log("check");
-  while (num != 0)
-  for(var i =0; i < 10; i++)  {
-    for(var j = 6; j >= 0; j--) {
-      if (num - romanValues[j] > 0){
-        romanNumeralString += roman[j];
-        num -= romanValues[j];
-      }
+  var roman = ['I', 'V', 'X', 'L', 'C', 'D', 'M'];
+  var romanValues = [1,5,10,50,100,500,1000];
+
+  for (var i = 0; i < 7; i++) {
+    if (number === romanValues[i]) {
+      console.log(roman[i]);
+      romanNumeralString += roman[i];
     }
   }
   return romanNumeralString;
 }
-console.log(romanNumeralString);
 
 
 
+  // return romanNumeralString;
+  // for(var i =0; i < 10; i++)  {
+  //   for(var j = 6; j >= 0; j--) {
+  //     if (num - romanValues[j] > 0){
+  //       string += roman[j];
+  //       num -= romanValues[j];
+  //     }
+  //   }
+  // }
+
+
+
+
+
+
+
+//
+//
 //   if (romanNumeralString.includes([IVXLCDM]\4)
 //   return romanNumeralString;
 // }
