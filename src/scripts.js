@@ -1,20 +1,4 @@
-//frontend
-$(document).ready(function() {
-  $('.converter').submit(function(event) {
-    event.preventDefault();
-    var number = parseInt($("input#numInput").val());
-    var romanNumeralString = '';
-    var output = converter(number, romanNumeralString);
-
-    $("p#output").text("result =" + output);
-  });
-});
-
-
-//backend
-
-
-function converter(number, romanNumeralString) {
+export function converter(number, romanNumeralString) {
   if(number > 3999){
     romanNumeralString = "input must be less than 4,000";
     alert(romanNumeralString)
